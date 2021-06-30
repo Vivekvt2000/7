@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="bg-text">
+  <h2>Enter Command </h2>
+    <div>
+        <span style="color:white; font-style: bolid; border-radius: 100px;">[Live@Dockerterminal ~]#</span>
+            <input  id="input" type="text" >
+	    <br>
+	    <pre><div id="d1" style="color:white; font-style: bolid; font-family: Avenir Next; "> (Live Docker terminal Output is displayed here)</divi></pre>
+        <button onclick="lw()" class="btn">Run</button>
+    </div>
+
+</div>
+<script>
+
+    function lw() {
+
+        input = document.getElementById("input").value;
+        console.log(input);
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://192.168.138.216/cgi-bin/docker.py?x="+ input, true);
+        
+        xhr.send();
+
+
+        xhr.onload = function() {
+                var output = xhr.responseText;
+                document.getElementById("d1").innerHTML = output;
+        }
+    }
+
+</script>
+</body>
+</html>
