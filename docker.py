@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-print("content-type: text/html")     # this line is used by the  browser as Head of Website
-print()                              # used to seprate Head of website to its Body
+print("content-type: text/html")     
+print("Access-Control-Allow-Origin:*")
+print()                           
 
-import cgi                           # CGI is Common Gateway Interface between client and server
+import cgi                           
 import subprocess
 
 y = cgi.FieldStorage()
-cmd = f.getvalue("x")
-output = subprocess.getoutput(cmd)
+cmd = y.getvalue("x")
+output = subprocess.getoutput("sudo " + cmd)
 print(output)
+                         
